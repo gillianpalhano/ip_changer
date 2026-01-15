@@ -1,16 +1,17 @@
-# ip_set
+# IPSet
 
-A new Flutter project.
+Um aplicativo para alterar IPs V4 de rede no Windows!
 
-## Getting Started
+## Projeto, download e build
 
-This project is a starting point for a Flutter application.
+Instalar:
+ * Ambiente para flutter com dependencias para build de apps windows!
+ * Enigma Virtual Box (opcional)
 
-A few resources to get you started if this is your first Flutter project:
+``` bash
+flutter pub get
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+flutter build windows
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Obs.: O "build exe.bat" executa o build e usa o "Enigma Virtual Box" para gerar um arquivo .exe único
