@@ -148,9 +148,10 @@ class _EditableNetTablePageState extends State<EditableNetTablePage> {
       final confirm = await confirmDialog(context,
         title: 'Configuração inválida',
         message: 'Tem certeza que deseja aplicar essa configuração?',
-        confirmText: 'Aplicar mesmo assim',
+        confirmText: 'Aplicar mesmo assim!',
         icon: Icons.warning,
         barrierDismissible: true,
+        isDanger: true,
       );
       if (!confirm) {
         return;
@@ -262,7 +263,7 @@ class _EditableNetTablePageState extends State<EditableNetTablePage> {
             iconSize: 30,
             disabledColor: Colors.grey,
             color: Colors.green,
-            onPressed: isAdmin() ? () => _executeRow(index) : null,
+            onPressed: !isAdmin() ? () => _executeRow(index) : null,
           ),
         ),
 
@@ -297,17 +298,7 @@ class _EditableNetTablePageState extends State<EditableNetTablePage> {
           field: 'DNS',
           hintText: '8.8.8.8;1.1.1.1',
         )),
-        // DataCell(SizedBox(
-        //   width: 200,
-        //   child: InterfaceDropdown(
-        //     value: r.interfaceName,
-        //     onChanged: (name) => setState(() {
-        //       r.interfaceName = name ?? '';
-        //       _recomputeEdited();
-        //     }),
-        //     label: 'Interface',
-        //   ),
-        // )),
+
         DataCell(
           SizedBox(
             width: 200,
@@ -342,7 +333,7 @@ class _EditableNetTablePageState extends State<EditableNetTablePage> {
             IconButton(
                 tooltip: 'Validar configuração',
                 icon: const Icon(Icons.check_circle, color: Colors.green),
-                iconSize: 15,
+                iconSize: 20,
                 onPressed: () {
                   _validateConfig(index);
                 },
@@ -465,6 +456,7 @@ class _EditableNetTablePageState extends State<EditableNetTablePage> {
                     child: Form(
                       key: _formKey,
                       child: DataTable(
+                        columnSpacing: 20,
                         // dataRowMinHeight: 40,
                         columns: const [
                           DataColumn(label: Text('Aplicar')),

@@ -35,14 +35,21 @@ Future<bool> confirmDialog(
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: Text(cancelText),
+            style: ButtonStyle(
+              side: WidgetStatePropertyAll (BorderSide(color: Theme.of(context).colorScheme.onSurface)),
+            ),
+            child: Text(cancelText, style: TextStyle(color: Theme.of(context).colorScheme.onSurface)),
           ),
           ElevatedButton(
-            style: isDanger
-                ? ElevatedButton.styleFrom(backgroundColor: Colors.red)
-                : null,
+            // style: isDanger
+            //     ? ElevatedButton.styleFrom(backgroundColor: Colors.red)
+            //     : null,
+            style: ButtonStyle(
+              side: WidgetStatePropertyAll (BorderSide(color: isDanger ? Colors.red : Theme.of(context).colorScheme.onSurface)),
+              backgroundColor: WidgetStatePropertyAll (isDanger ? Colors.red : Theme.of(context).colorScheme.primary),
+            ),
             onPressed: () => Navigator.of(context).pop(true),
-            child: Text(confirmText),
+            child: Text(confirmText, style: TextStyle(color: Theme.of(context).colorScheme.onSurface)),
           ),
         ],
       );

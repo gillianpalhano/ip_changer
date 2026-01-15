@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+final Uri _url = Uri.parse('https://github.com/gillianpalhano/ip_changer');
+Future<void> _abrirLink() async {
+  if (!await launchUrl(_url)) {
+    throw 'Não foi possível abrir $_url';
+  }
+}
 
 void aboutDialog(BuildContext context) {
   showDialog(
@@ -26,13 +34,21 @@ void aboutDialog(BuildContext context) {
                     Text('Versão 1.0.0'),
                     SizedBox(height: 10),
                     Text('Desenvolvido por Gillian Palhano'),
-                    SizedBox(height: 10),
+                    SizedBox(height: 20),
+                    TextButton(
+                      onPressed: _abrirLink,
+                      style: ButtonStyle(
+                        side: WidgetStatePropertyAll (BorderSide(color: Colors.blue)),
+                      ),
+                      child: Text('Visite o projeto no GitHub', style: TextStyle(color: Colors.blue)),
+
+                    ),
                   ],
                 ),
               ],
             ),
           ),
-          actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text('Fechar'))],
+          actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text('Fechar', style: TextStyle(color: Theme.of(context).colorScheme.onSurface)))],
         ),
   );
 }
