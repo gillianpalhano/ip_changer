@@ -269,7 +269,7 @@ class _EditableNetTablePageState extends State<EditableNetTablePage> {
             iconSize: 30,
             disabledColor: Colors.grey,
             color: Colors.green,
-            onPressed: !isAdmin() ? () => _executeRow(index) : null,
+            onPressed: isAdmin() ? () => _executeRow(index) : null,
           ),
         ),
 
